@@ -36,7 +36,7 @@ public class Main {
                 System.out.println(link);
                 Document doc=HttpGetAndParseHtml(URLExceptionHandling(link));
 
-                 doc.select("a").stream().map(aTag->aTag.attr("href")).forEach(linkPool::add);
+                doc.select("a").stream().map(aTag->aTag.attr("href")).forEach(linkPool::add);
 
                 storeIntoDatabaseIfItIsNewspage(doc);
 
@@ -51,8 +51,8 @@ public class Main {
         ArrayList<Element> articleTags = doc.select("article");
         if (!articleTags.isEmpty()) {
 //            for (Element articleTag : articleTags) {
-                String title = articleTags.get(0).child(0).text();
-                System.out.println(title);
+            String title = articleTags.get(0).child(0).text();
+            System.out.println(title);
 //            }
         }
     }
@@ -77,7 +77,7 @@ public class Main {
             System.out.println(link);
         }
         if (link.contains("\\/")){
-            link=link.replace("\\/","/");
+            link = link.replace("\\/", "/");
         }
         return link;
     }
