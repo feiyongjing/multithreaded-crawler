@@ -1,0 +1,415 @@
+2020-01-09 21:02:03 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECK[*] LINK FROM LINKS_TO_BE_PROCESSED"; expected "SET, SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+seleck link from LINKS_TO_BE_PROCESSED [42001-200]
+2020-01-09 21:02:51 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+select link from LINKS_TO_BE_PROCESSED [42102-200]
+2020-01-09 21:03:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+select*from LINKS_TO_BE_PROCESSED [42102-200]
+2020-01-09 21:05:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+select*from LINKS_TO_BE_PROCESSED [42102-200]
+2020-01-09 21:05:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+select*from LINKS_TO_BE_PROCESSED [42102-200]
+2020-01-09 21:06:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_ALREADY_PROCESSFD" not found; SQL statement:
+select * from LINKS_ALREADY_PROCESSFD [42102-200]
+2020-01-09 21:06:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_ALREADY_PROCESSFD" not found; SQL statement:
+select * from LINKS_ALREADY_PROCESSFD [42102-200]
+2020-01-09 21:10:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+select link from LINKS_TO_BE_PROCESSED [42102-200]
+2020-01-09 21:15:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+select link from LINKS_TO_BE_PROCESSED: [42102-200]
+2020-01-09 21:15:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+select link from LINKS_TO_BE_PROCESSED [42102-200]
+2020-01-09 21:19:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_TO_BE_PROCESSED" already exists; SQL statement:
+create table LINKS_TO_BE_PROCESSED(
+link varchar(100)
+) [42101-200]
+2020-01-09 21:21:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_ALREADY_PROCESSFD" already exists; SQL statement:
+create table LINKS_ALREADY_PROCESSFD(
+link varchar(100)
+) [42101-200]
+2020-01-09 21:28:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NEWS" already exists; SQL statement:
+create table NEWS(
+id bigint primary key auto_increment,
+title text,
+content text,
+url varchar(100),
+created_at timestamp,
+modified_at timestamp
+) [42101-200]
+2020-01-09 21:28:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NEWS" already exists; SQL statement:
+create table news(
+id bigint primary key auto_increment,
+title text,
+content text,
+url varchar(100),
+created_at timestamp,
+modified_at timestamp
+) [42101-200]
+2020-01-09 22:18:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO LINKS_TO_BE_PROCESSED[*]"; expected "., (, DIRECT, SORTED, DEFAULT, VALUES, SET, (, WITH, SELECT, TABLE, VALUES"; SQL statement:
+insert into LINKS_TO_BE_PROCESSED [42001-200]
+2020-01-09 22:24:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM WHERE[*] LINK=LINKS_TO_BE_PROCESSED"; expected "identifier"; SQL statement:
+delete from where link=LINKS_TO_BE_PROCESSED [42001-200]
+2020-01-09 22:25:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM WHERE[*] LINK LINKS_TO_BE_PROCESSED"; expected "identifier"; SQL statement:
+delete from where link LINKS_TO_BE_PROCESSED [42001-200]
+2020-01-09 22:26:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO LINKS_TO_BE_PROCESSED (LINK)VALUES('https://sina.cn')
+SELECT[*] LINK FROM LINKS_TO_BE_PROCESSED
+DELETE FROM WHERE LINK LINKS_TO_BE_PROCESSED"; SQL statement:
+insert into LINKS_TO_BE_PROCESSED (link)values('https://sina.cn')
+select link from LINKS_TO_BE_PROCESSED
+delete from where link LINKS_TO_BE_PROCESSED [42000-200]
+2020-01-09 22:27:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM WHERE[*] LINK = LINKS_TO_BE_PROCESSED"; expected "identifier"; SQL statement:
+delete from where link = LINKS_TO_BE_PROCESSED [42001-200]
+2020-01-09 22:29:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where link = LINKS_TO_BE_PROCESSED [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.Comparison.optimize(Comparison.java:191)
+	at org.h2.command.dml.Delete.prepare(Delete.java:184)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at net.sourceforge.squirrel_sql.client.session.StatementWrapper.execute(StatementWrapper.java:168)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:355)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:209)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:748)
+2020-01-09 22:30:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where link = LINKS_TO_BE_PROCESSED [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.Comparison.optimize(Comparison.java:191)
+	at org.h2.command.dml.Delete.prepare(Delete.java:184)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at net.sourceforge.squirrel_sql.client.session.StatementWrapper.execute(StatementWrapper.java:168)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:355)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:209)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:748)
+2020-01-09 22:31:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where link=LINKS_TO_BE_PROCESSED [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.Comparison.optimize(Comparison.java:191)
+	at org.h2.command.dml.Delete.prepare(Delete.java:184)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at net.sourceforge.squirrel_sql.client.session.StatementWrapper.execute(StatementWrapper.java:168)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:355)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:209)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:748)
+2020-01-09 22:31:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO LINKS_TO_BE_PROCESSED (LINK)VALUES('https://sina.cn')
+SELECT[*] LINK FROM LINKS_TO_BE_PROCESSED
+DELETE FROM LINKS_TO_BE_PROCESSED WHERE LINK='LINKS_TO_BE_PROCESSED'"; SQL statement:
+insert into LINKS_TO_BE_PROCESSED (link)values('https://sina.cn')
+select link from LINKS_TO_BE_PROCESSED
+delete from LINKS_TO_BE_PROCESSED where link='LINKS_TO_BE_PROCESSED' [42000-200]
+2020-01-10 21:57:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 22:02:27 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:90)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2787)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:441)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:404)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3343)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:95)
+	at org.h2.engine.Database.getPageStore(Database.java:2739)
+	at org.h2.engine.Database.open(Database.java:769)
+	at org.h2.engine.Database.openDatabase(Database.java:319)
+	at org.h2.engine.Database.<init>(Database.java:313)
+	at org.h2.engine.Engine.openSession(Engine.java:69)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at com.github.feiyongjing.Main.main(Main.java:32)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	... 25 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:883)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:390)
+	... 19 more
+2020-01-10 22:03:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 22:09:42 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:90)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2787)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:441)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:404)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3343)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:95)
+	at org.h2.engine.Database.getPageStore(Database.java:2739)
+	at org.h2.engine.Database.open(Database.java:769)
+	at org.h2.engine.Database.openDatabase(Database.java:319)
+	at org.h2.engine.Database.<init>(Database.java:313)
+	at org.h2.engine.Engine.openSession(Engine.java:69)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at com.github.feiyongjing.Main.main(Main.java:32)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	... 25 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:883)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:390)
+	... 19 more
+2020-01-10 22:10:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 22:11:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT LIKE[*] FROM LINKS_TO_BE_PROCESSED"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select like from LINKS_TO_BE_PROCESSED [42001-200]
+2020-01-10 22:24:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+drop table LINKS_TO_BE_PROCESSED [42102-200]
+2020-01-10 22:25:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_TO_BE_PROCESSED" not found; SQL statement:
+select * from LINKS_TO_BE_PROCESSED [42102-200]
+2020-01-10 22:26:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_ALREADY_PROCESSFDD" not found; SQL statement:
+drop table LINKS_ALREADY_PROCESSFDD [42102-200]
+2020-01-10 22:27:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_ALREADY_PROCESSFDD" not found; SQL statement:
+drop table LINKS_ALREADY_PROCESSFDD [42102-200]
+2020-01-10 22:27:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINKS_ALREADY_PROCESSFD" not found; SQL statement:
+select * from LINKS_ALREADY_PROCESSFD [42102-200]
+2020-01-10 22:32:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO LINKS_TO_BE_PROCESSED (LINK) VALIES[*] ('https://sina.cn')"; expected "DIRECT, SORTED, DEFAULT, VALUES, SET, (, WITH, SELECT, TABLE, VALUES"; SQL statement:
+insert into LINKS_TO_BE_PROCESSED (link) valies ('https://sina.cn') [42001-200]
+2020-01-10 22:34:22 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:90)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2787)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:441)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:404)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3343)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:95)
+	at org.h2.engine.Database.getPageStore(Database.java:2739)
+	at org.h2.engine.Database.open(Database.java:769)
+	at org.h2.engine.Database.openDatabase(Database.java:319)
+	at org.h2.engine.Database.<init>(Database.java:313)
+	at org.h2.engine.Engine.openSession(Engine.java:69)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at com.github.feiyongjing.Main.main(Main.java:32)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	... 25 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:883)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:390)
+	... 19 more
+2020-01-10 22:35:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 22:41:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 23:01:26 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:90)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2787)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:441)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:404)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3343)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:95)
+	at org.h2.engine.Database.getPageStore(Database.java:2739)
+	at org.h2.engine.Database.open(Database.java:769)
+	at org.h2.engine.Database.openDatabase(Database.java:319)
+	at org.h2.engine.Database.<init>(Database.java:313)
+	at org.h2.engine.Engine.openSession(Engine.java:69)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at com.github.feiyongjing.Main.main(Main.java:32)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]" [50000-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	... 25 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.199/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:883)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:390)
+	... 19 more
+2020-01-10 23:01:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 23:04:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 23:06:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 23:07:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 23:09:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 23:14:51 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at net.sourceforge.squirrel_sql.fw.sql.SQLDriverManager.getConnection(SQLDriverManager.java:147)
+	at net.sourceforge.squirrel_sql.client.mainframe.action.OpenConnectionCommand.executeConnect(OpenConnectionCommand.java:148)
+	at net.sourceforge.squirrel_sql.client.mainframe.action.OpenConnectionCommand.lambda$execute$0(OpenConnectionCommand.java:93)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 30 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Multithreaded-crawler/news.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 24 more
+2020-01-10 23:15:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+delete from LINKS_TO_BE_PROCESSED where like = ? [42001-199]
+2020-01-10 23:15:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT LIKE[*] FROM LINKS_ALREADY_PROCESSFD WHERE LIKE = HTTPS:        n"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select like from LINKS_ALREADY_PROCESSFD where like = https://sina.cn [42001-200]
+2020-01-10 23:16:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT LIKE[*] FROM LINKS_ALREADY_PROCESSFD WHERE LIKE = 'https://sina.cn'"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select like from LINKS_ALREADY_PROCESSFD where like = 'https://sina.cn' [42001-200]
+2020-01-10 23:17:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT LIKE[*] FROM LINKS_TO_BE_PROCESSED WHERE LIKE = 'https://sina.cn'"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select like from LINKS_TO_BE_PROCESSED where like = 'https://sina.cn' [42001-200]
+2020-01-10 23:18:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT LINK FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = 'https://sina.cn'"; expected "NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select link from LINKS_TO_BE_PROCESSED where like = 'https://sina.cn' [42001-200]
+2020-01-10 23:18:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT LINK FROM LINKS_TO_BE_PROCESSED WHERE LIKE[*] = 'https://sina.cn'"; expected "NOT, EXISTS, INTERSECTS, UNIQUE"; SQL statement:
+select link from LINKS_TO_BE_PROCESSED where like = 'https://sina.cn' [42001-200]
+2020-01-10 23:21:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT LINK FROM LINKS_ALREADY_PROCESSFD WHERE LIKE[*] = ? "; expected "NOT, EXISTS, INTERSECTS"; SQL statement:
+select link from LINKS_ALREADY_PROCESSFD where like = ? [42001-199]
+2020-01-10 23:26:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO LINKS_TO_BE_PROCESSED (LINK) VALUE[*] (?) "; expected "DIRECT, SORTED, DEFAULT, VALUES, SET, (, WITH, SELECT, FROM, TABLE, VALUES"; SQL statement:
+insert into LINKS_TO_BE_PROCESSED (link) value (?) [42001-199]
+2020-01-10 23:27:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO LINKS_TO_BE_PROCESSED (LINK) VALUE[*] (?) "; expected "DIRECT, SORTED, DEFAULT, VALUES, SET, (, WITH, SELECT, FROM, TABLE, VALUES"; SQL statement:
+insert into LINKS_TO_BE_PROCESSED (link) value (?) [42001-199]
