@@ -14,6 +14,7 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 
 public class Main {
@@ -52,7 +53,7 @@ public class Main {
 
                 parseUrisFromPageAndStoreInToDatabase(connection, doc);
 
-                storeInToDatabaseIfItIsNewspage(connection, doc);
+                storeInToDatabaseIfItIsNewspage(connection, doc, link);
 
                 updateDatabase(connection, link, "insert into LINKS_ALREADY_PROCESSFD (link) values (?)");
             }
@@ -77,7 +78,7 @@ public class Main {
     private static void parseUrisFromPageAndStoreInToDatabase(Connection connection, Document doc) throws SQLException {
         for (Element aTag : doc.select("a")) {
             String href = aTag.attr("href");
-            updateDatabase(connection, aTag.attr("href"), "insert into LINKS_TO_BE_PROCESSED (link) values (?)");
+            updateDatabase(connection, href, "insert into LINKS_TO_BE_PROCESSED (link) values (?)");
         }
     }
 
@@ -97,13 +98,20 @@ public class Main {
         return false;
     }
 
-    private static void storeInToDatabaseIfItIsNewspage(Connection connection, Document doc) {
+    private static void storeInToDatabaseIfItIsNewspage(Connection connection, Document doc, String link) throws SQLException {
         ArrayList<Element> articleTags = doc.select("article");
         if (!articleTags.isEmpty()) {
-//            for (Element articleTag : articleTags) {
-            String title = articleTags.get(0).child(0).text();
-            System.out.println(title);
-//            }
+            for (Element articleTag : articleTags) {
+                String title = articleTags.get(0).child(0).text();
+                String content = articleTag.select("p").stream().map(Element::text).collect(Collectors.joining("\n"));
+//                System.out.println(title);
+                try (PreparedStatement statement = connection.prepareStatement("insert into NEWS (URL,TITLE,CONTENT,CREATED_AT,MODIFIED_AT) values (?,?,?,now(),now() )")) {
+                    statement.setString(1, link);
+                    statement.setString(2, title);
+                    statement.setString(3, content);
+                    statement.executeUpdate();
+                }
+            }
         }
     }
 
