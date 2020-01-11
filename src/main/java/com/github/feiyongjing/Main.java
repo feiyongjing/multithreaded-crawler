@@ -14,40 +14,32 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Main {
-    private static final String USER_WAME="root";
-    private static final String PASSEORD="root";
-    private static List<String> loadUrlsFromDatabase(Connection connection, String spl) throws SQLException {
-        List<String> results = new ArrayList<>();
+    private static final String USER_WAME = "root";
+    private static final String PASSWORD = "root";
+
+    private static String getNextLink(Connection connection, String spl) throws SQLException {
         ResultSet resultSet = null;
         try (PreparedStatement statement = connection.prepareStatement(spl)) {
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                results.add(resultSet.getNString(1));
+                return resultSet.getNString(1);
             }
-        }finally {
+        } finally {
             if (resultSet != null) {
                 resultSet.close();
             }
         }
-        return results;
+        return null;
     }
 
     @SuppressFBWarnings("DMI_CONSTANT_DB_PASSWORD")
     public static void main(String[] args) throws IOException, SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:h2:file:E:\\Multithreaded-crawler/news", USER_WAME, PASSEORD);
-        while (true) {
-            //待处理的池子
-            List<String> linkPool = loadUrlsFromDatabase(connection, "select link from LINKS_TO_BE_PROCESSED");
-            if (linkPool.isEmpty()) {
-                break;
-            }
-
-            String link = linkPool.remove(linkPool.size() - 1);
-            insertLinkInToDatabase(connection, link, "delete from LINKS_TO_BE_PROCESSED where link = ?");
+        Connection connection = DriverManager.getConnection("jdbc:h2:file:E:\\Multithreaded-crawler/news", USER_WAME, PASSWORD);
+        String link;
+        while ((link = getNextLinkThenDelete(connection)) != null) {
 
             if (isLinkProcessed(connection, link)) {
                 continue;
@@ -58,20 +50,34 @@ public class Main {
                 System.out.println(link);
                 Document doc = HttpGetAndParseHtml(URLExceptionHandling(link));
 
-                parseUrisFromPageAndStoreInToDatabase(connection, linkPool, doc);
+                parseUrisFromPageAndStoreInToDatabase(connection, doc);
 
                 storeInToDatabaseIfItIsNewspage(connection, doc);
 
-                insertLinkInToDatabase(connection, link, "insert into LINKS_ALREADY_PROCESSFD (link) values (?)");
+                updateDatabase(connection, link, "insert into LINKS_ALREADY_PROCESSFD (link) values (?)");
             }
         }
     }
 
-    private static void parseUrisFromPageAndStoreInToDatabase(Connection connection, List<String> linkPool, Document doc) throws SQLException {
+    private static String getNextLinkThenDelete(Connection connection) throws SQLException {
+        String link = getNextLink(connection, "select link from LINKS_TO_BE_PROCESSED limit 1");
+        if (link != null) {
+            updateDatabase(connection, link, "delete from LINKS_TO_BE_PROCESSED where link = ?");
+        }
+        return link;
+    }
+
+    private static void updateDatabase(Connection connection, String link, String spl) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(spl)) {
+            statement.setString(1, link);
+            statement.executeUpdate();
+        }
+    }
+
+    private static void parseUrisFromPageAndStoreInToDatabase(Connection connection, Document doc) throws SQLException {
         for (Element aTag : doc.select("a")) {
             String href = aTag.attr("href");
-            linkPool.add(href);
-            insertLinkInToDatabase(connection, href, "insert into LINKS_TO_BE_PROCESSED (link) values (?)");
+            updateDatabase(connection, aTag.attr("href"), "insert into LINKS_TO_BE_PROCESSED (link) values (?)");
         }
     }
 
@@ -89,13 +95,6 @@ public class Main {
             }
         }
         return false;
-    }
-
-    private static void insertLinkInToDatabase(Connection connection, String href, String spl) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(spl)) {
-            statement.setString(1, href);
-            statement.executeUpdate();
-        }
     }
 
     private static void storeInToDatabaseIfItIsNewspage(Connection connection, Document doc) {
