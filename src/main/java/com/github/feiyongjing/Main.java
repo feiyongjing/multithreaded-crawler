@@ -98,7 +98,7 @@ public class Main {
         return false;
     }
 
-    private static void storeInToDatabaseIfItIsNewspage(Connection connection, Document doc,String link) throws SQLException {
+    private static void storeInToDatabaseIfItIsNewspage(Connection connection, Document doc, String link) throws SQLException {
         ArrayList<Element> articleTags = doc.select("article");
         if (!articleTags.isEmpty()) {
             for (Element articleTag : articleTags) {
