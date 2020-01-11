@@ -24,5 +24,4 @@ hs_err_pid*
 target/
 *.iml
 .idea
-news.mv.db
-news.trace.db
+*.db
