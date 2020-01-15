@@ -18,7 +18,7 @@ public class JdbcCrawlerDao implements CrawlerDao {
         }
     }
 
-    public String getNextLink(String spl) throws SQLException {
+    private String getNextLink(String spl) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(spl); ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 return resultSet.getNString(1);
@@ -65,6 +65,16 @@ public class JdbcCrawlerDao implements CrawlerDao {
             statement.setString(3, content);
             statement.executeUpdate();
         }
+    }
+
+    @Override
+    public void insertProcessedLink(String link) throws SQLException {
+        updateDatabase(link, "insert into LINKS_ALREADY_PROCESSFD (link) values (?)");
+    }
+
+    @Override
+    public void insertLinkToBeprocessed(String href) throws SQLException {
+        updateDatabase(href, "insert into LINKS_TO_BE_PROCESSED (link) values (?)");
     }
 
 }
