@@ -38,7 +38,6 @@ public class Crawler {
                 storeInToDatabaseIfItIsNewspage(doc, link);
 
                 dao.insertProcessedLink(link);
-//                dao.updateDatabase(link, "insert into LINKS_ALREADY_PROCESSFD (link) values (?)");
             }
         }
     }
@@ -52,7 +51,6 @@ public class Crawler {
         for (Element aTag : doc.select("a")) {
             String href = aTag.attr("href");
             dao.insertLinkToBeprocessed(href);
-//            dao.updateDatabase(href, "insert into LINKS_TO_BE_PROCESSED (link) values (?)");
         }
     }
 
@@ -63,7 +61,7 @@ public class Crawler {
             for (Element articleTag : articleTags) {
                 String title = articleTags.get(0).child(0).text();
                 String content = articleTag.select("p").stream().map(Element::text).collect(Collectors.joining("\n"));
-//                System.out.println(title);
+                System.out.println(title);
 
                 dao.insertNewsIntoDatabase(link, title, content);
             }

@@ -13,18 +13,19 @@
         delete from LINKS_TO_BE_PROCESSED where link = #{link}
     </delete>
     <insert id="insertNews" parameterType="com.github.feiyongjing.News">
-        insert into NEWS (URL,TITLE,CONTENT,CREATED_AT,MODIFIED_AT) values (#{url},#{title},#{content},now(),now() )
+        insert into NEWS (URL,TITLE,CONTENT,CREATED_AT,MODIFIED_AT) values (#{url},#{title},#{content},now(),now())
     </insert>
     <insert id="insertLink" parameterType="HashMap">
         insert into
         <choose>
-            <when test="tableName == 'links_already_processed'">
-                links_already_processfd
+            <when test="tableName == 'LINKS_ALREADY_PROCESSED'">
+                LINKS_ALREADY_PROCESSFD
             </when>
             <otherwise>
-                links_to_be_processed
+                LINKS_TO_BE_PROCESSED
             </otherwise>
         </choose>
-(link) values #{link}
+        (link)
+        values (#{link})
     </insert>
 </mapper>
