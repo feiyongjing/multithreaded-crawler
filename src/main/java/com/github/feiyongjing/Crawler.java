@@ -16,36 +16,35 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 
-public class Crawler {
-//    CrawlerDao dao = new JdbcCrawlerDao();
-    CrawlerDao dao = new MyBatisCrawlerDao();
+public class Crawler extends Thread {
 
-    public void run() throws SQLException, IOException {
+    CrawlerDao dao;
+
+    public Crawler(CrawlerDao dao) {
+        this.dao = dao;
+    }
+
+    @Override
+    public void run() {
         String link;
-        while ((link = dao.getNextLinkThenDelete()) != null) {
-
-            if (dao.isLinkProcessed(link)) {
-                continue;
+        try {
+            while ((link = dao.getNextLinkThenDelete()) != null) {
+                if (dao.isLinkProcessed(link)) {
+                    continue;
+                }
+                if (IsItnecessary(link)) {
+                    System.out.println(link);
+                    Document doc = HttpGetAndParseHtml(URLExceptionHandling(link));
+                    parseUrisFromPageAndStoreInToDatabase(doc);
+                    storeInToDatabaseIfItIsNewspage(doc, link);
+                    dao.insertProcessedLink(link);
+                }
             }
-
-            if (IsItnecessary(link)) {
-
-                System.out.println(link);
-                Document doc = HttpGetAndParseHtml(URLExceptionHandling(link));
-
-                parseUrisFromPageAndStoreInToDatabase(doc);
-
-                storeInToDatabaseIfItIsNewspage(doc, link);
-
-                dao.insertProcessedLink(link);
-            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
-
-    public static void main(String[] args) throws IOException, SQLException {
-        new Crawler().run();
-    }
 
     public void parseUrisFromPageAndStoreInToDatabase(Document doc) throws SQLException {
         for (Element aTag : doc.select("a")) {

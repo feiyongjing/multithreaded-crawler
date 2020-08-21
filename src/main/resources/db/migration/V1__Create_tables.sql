@@ -12,5 +12,6 @@ create table NEWS(
                      content text,
                      url varchar(5000),
                      created_at timestamp default now(),
-                     modified_at timestamp default now()
-);
+                     modified_at timestamp default now(),
+                     INDEX title_index (title(150))
+)DEFAULT CHARSET=utf8mb4;
