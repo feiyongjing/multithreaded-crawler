@@ -14,6 +14,9 @@ import java.util.Random;
 public class MockDataGenerator{
     private static final int TARGET_ROW_COUNT = 100_0000;
 
+    /**
+     * 数据库复制数据到1000000条
+     */
     public static void main(String[] args) {
         SqlSessionFactory sqlSessionFactory;
         try {

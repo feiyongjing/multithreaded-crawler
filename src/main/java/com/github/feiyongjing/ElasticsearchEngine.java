@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ElasticsearchEngine {
+    /**
+     * 命令行搜索数据
+     */
     public static void main(String[] args) throws IOException {
         while(true){
             System.out.println("Please input a search keyword: ");

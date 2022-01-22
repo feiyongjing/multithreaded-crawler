@@ -22,6 +22,9 @@ import java.util.Map;
 
 public class ElasticsearchDataGenerator extends Thread {
 
+    /**
+     * 从数据库获取数据灌入Elasticsearch
+     */
     public static void main(String[] args) {
         SqlSessionFactory sqlSessionFactory;
         try {
